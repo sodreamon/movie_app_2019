@@ -1,15 +1,27 @@
 import React from "react";
 import axios from "axios";
+import Movie from "./Movies";
 // import PropTypes from "prop-types";
 // import Potato from "./Potato";
 
 class App extends React.Component {
   state = {
     isLoading: true,
-    movie: []
+    movies: []
   };
   getMovies = async () => {
-    const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json");
+    const {
+      data: {
+        data: { movies }
+        //data.data.movies와 같은 [es6] 표현 여튼 마지막 movies를 movies라고 정의함
+      }
+    } = await axios.get(
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+    );
+    this.setState({ movies, isLoading: false });
+    //this.setState({movies:movies}) ({스테이트에 있는 movies : getMovies에서 정의한 movies}) 와 같이 표현가능
+
+    //console.log(movies);
     //async로 동기화 되는 것이라고 알려줌, await로 시간이 걸리는 걸 알려줌    await는 async가 있어야 사용가능
   };
 
@@ -24,9 +36,25 @@ class App extends React.Component {
     //render되면 실행되는 함수임.   setTimeout으로 6초 뒤에 setTimeout 내부 값을 실행    setState로 isLoading을 false값으로 변경
   }*/
   render() {
-    const { isLoading } = this.state;
-    //[ES6] isLoading이 state에 있는 isLoading이라고 정의
-    return <div>{isLoading ? "Loading" : "We are ready"}</div>;
+    const { isLoading, movies } = this.state;
+    //[ES6] isLoading이 state에 있는 isLoading이라고 정의     movies는 Movies.Moive component와 무관함
+    return (
+      <div>
+        {isLoading
+          ? "Loading"
+          : movies.map(movie => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+              />
+              //Movies.Movie component를 가져옴 Movie({}) component에 지정한 항목들만 내용물로 사용가능     <Movie 안의 내용들만 Movies.js > Movie component와 관련있음
+            ))}
+      </div>
+    );
   }
 }
 
