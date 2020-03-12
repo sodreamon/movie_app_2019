@@ -2,8 +2,74 @@ import React from "react";
 import PropTypes from "prop-types";
 // import Potato from "./Potato";
 
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movie: []
+  };
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000);
+    //render되면 실행되는 함수임.   setTimeout으로 6초 뒤에 setTimeout 내부 값을 실행    setState로 isLoading을 false값으로 변경
+  }
+  render() {
+    const { isLoading } = this.state;
+    //[ES6] isLoading이 state에 있는 isLoading이라고 정의
+    return <div>{isLoading ? "Loading" : "We are ready"}</div>;
+  }
+}
+
+export default App;
+
+/*class App extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   console.log("hello");
+  //}
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(current => ({
+      count: current.count + 1
+    }));
+  };
+  minus = () => {
+    this.setState(current => ({
+      count: current.count - 1
+    }));
+    // state를 직접 변경하면 안됨 setState를 써야 됨. (current => ({count: current.count + 1}))는 ({count: this.state.count + 1})과 같음    setState를 호출 할 때마다 새로운 state를 render해옴
+  };
+
+  // componentDidMount() {
+  //   console.log("component rendered");
+  //   //render가 처음 발생하면 실행 update때는 상관 없음
+  // }
+  // componentDidUpdate() {
+  //   console.log("i just updated");
+  //   //render가 state등에 의해 update되면 실행
+  // }
+  // componentWillUnmount() {
+  //   console.log("Goodbye, cruel world");
+  //   //다른 페이지로 가거나 등등 component가 끝날 때 실행
+  // }
+  render() {
+    // console.log("im rendering");
+    return (
+      <div>
+        <h1>the number is {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
+  // state 내부의 값은 변화를 줄 수 있음
+  // 클릭하면 add, minus 함수를 실행하는 버튼을 만듬
+}*/
+
 // 일단은 array를 하나 만듬
-const FoodILike = [
+/* const FoodILike = [
   {
     id: 1,
     // map을 써서 각각의 {}가 정의되면 모두 같은 정의를 갇기 때문에 id가 필요함
@@ -40,38 +106,38 @@ const FoodILike = [
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F16610E42512D8B7C15&f=1&nofb=1",
     rating: 4.7
   }
-];
+]; */
 
-function Food({ name, picture, rating }) {
+/*function Food({ name, picture, rating }) {
   // Food를 JSX component로 쓸 거라서 첫글자 대문자
-  /* console.log(fav);
+   console.log(fav);
   콘솔 창에 JSX fav값을 출력한다. 
   function Food({ fav })는 (props.fav)와 같음
   한 conponent에서 여러 props를 사용하려면
-  function Food(props) -> props.fav 처럼 사용하는게 편함 */
+  function Food(props) -> props.fav 처럼 사용하는게 편함 
   return (
     <div>
       <h1>I like {name}</h1>
       <h4>{rating}/5.0</h4>
       <img src={picture} alt={name} />
-      {/* image는 src(source라는 뜻)를 써야됨 */}
+       image는 src(source라는 뜻)를 써야됨 
     </div>
   );
-  /* Food가 가진 모든 fav를 loop로 출력함 */
-}
+   Food가 가진 모든 fav를 loop로 출력함 
+} */
 
-Food.propTypes = {
+/*Food.propTypes = {
   name: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired
-  /* 내용물이 string인지 number인지 */
-  /*require은 필수 인지 아닌지*/
-};
+   내용물이 string인지 number인지 
+  require은 필수 인지 아닌지
+};*/
 
 /* function renderFood(dish) {return <Food name={dish.name} picture={dish.image} />;}
 아래 {FoodILike.map(renderFood)}를 dish라고 재정의 하고 이전 방식과 같이 return 할 수 있다. */
 
-function App() {
+/*function App() {
   return (
     <div className="App">
       {FoodILike.map(dish => (
@@ -82,25 +148,23 @@ function App() {
           rating={dish.rating}
         />
       ))}
-      {/* map으로 FoodILike array 안의 dish를 정의하고 dish들 안에 정의된 name들을
+      map으로 FoodILike array 안의 dish를 정의하고 dish들 안에 정의된 name들을
       호출함. 그리고 Food 함수로 props를 보냄.
-      그리고 dish들은 같은 정의를 갇기 때문에 만든 id값을 넣어줌 key */}
+      그리고 dish들은 같은 정의를 갇기 때문에 만든 id값을 넣어줌 key
 
-      {/* {FoodILike.map(renderFood)}
-      위쪽에 renderFood라는 function을 만들어 내부값을 만들어줄 수 있다 */}
+      {FoodILike.map(renderFood)}
+      위쪽에 renderFood라는 function을 만들어 내부값을 만들어줄 수 있다
 
-      {/* <Food fav="kimchi" />
+      <Food fav="kimchi" />
       component는 첫글자 대문자 필수 Food 
        위 같이 props를 만들어줌 fav가 props임
       <Food fav="ramen" />
       <Food fav="samgiopsal" />
-      <Food fav="chukumi" /> */}
+      <Food fav="chukumi" /> 
 
-      {/* <Potato /> */}
-      {/* Potato 내용이 hello 내용 아래에 입력됨(index.js에 따로 Potato를 쓸 필요
-      없음) */}
+       <Potato /> 
+      Potato 내용이 hello 내용 아래에 입력됨(index.js에 따로 Potato를 쓸 필요
+      없음)
     </div>
   );
-}
-
-export default App;
+}*/

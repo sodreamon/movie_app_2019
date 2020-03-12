@@ -1,3 +1,6 @@
+4.0
+
+
 ### react app 만들기
 
 npx create-react-app movie_app
@@ -29,3 +32,13 @@ src. App
 import PropTypes
 Food.propTypes = {
 console에서 에러 확인
+
+
+
+
+### class component 만들기
+src. App
+class App extends React.Component{}
+App이 클래스 이름이 됨
+state = {}
+state의 데이터는 변화함
