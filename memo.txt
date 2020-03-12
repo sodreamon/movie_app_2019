@@ -1,0 +1,20 @@
+### react app 만들기
+
+npx create-react-app movie_app
+
+
+
+
+### 깃 업로드
+
+git init
+git remote add origin https://github.com/sodreamon/movie_app.git
+git add.
+git commit -m "start"
+git push origin master
+
+
+
+
+### 새로운 js 생성
+src. Potato
