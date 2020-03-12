@@ -1,4 +1,4 @@
-4.0 4:53
+
 
 
 ### react app 만들기
@@ -47,5 +47,13 @@ state의 데이터는 변화함
 
 
 ### axios
+src. App
 npm i axios
 import axios from "axios";
+axios.get("{json}")
+
+
+
+
+### async await
+src. App

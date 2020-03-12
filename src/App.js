@@ -8,9 +8,13 @@ class App extends React.Component {
     isLoading: true,
     movie: []
   };
+  getMovies = async () => {
+    const movies = await axios.get("http://yts-proxy.now.sh/list_movies.json");
+    //async로 동기화 되는 것이라고 알려줌, await로 시간이 걸리는 걸 알려줌    await는 async가 있어야 사용가능
+  };
 
   componentDidMount() {
-    axios.get("");
+    this.getMovies();
   }
 
   /*componentDidMount() {
