@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import axios from "axios";
+// import PropTypes from "prop-types";
 // import Potato from "./Potato";
 
 class App extends React.Component {
@@ -7,12 +8,17 @@ class App extends React.Component {
     isLoading: true,
     movie: []
   };
+
   componentDidMount() {
+    axios.get("");
+  }
+
+  /*componentDidMount() {
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 6000);
     //render되면 실행되는 함수임.   setTimeout으로 6초 뒤에 setTimeout 내부 값을 실행    setState로 isLoading을 false값으로 변경
-  }
+  }*/
   render() {
     const { isLoading } = this.state;
     //[ES6] isLoading이 state에 있는 isLoading이라고 정의

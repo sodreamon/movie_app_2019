@@ -1,4 +1,4 @@
-4.0
+4.0 4:53
 
 
 ### react app 만들기
@@ -42,3 +42,10 @@ class App extends React.Component{}
 App이 클래스 이름이 됨
 state = {}
 state의 데이터는 변화함
+
+
+
+
+### axios
+npm i axios
+import axios from "axios";
