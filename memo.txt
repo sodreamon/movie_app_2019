@@ -18,3 +18,14 @@ git push origin master
 
 ### 새로운 js 생성
 src. Potato
+
+
+
+
+### prop 검사
+https://github.com/facebook/prop-types
+npm i prop-types
+src. App
+import PropTypes
+Food.propTypes = {
+console에서 에러 확인
