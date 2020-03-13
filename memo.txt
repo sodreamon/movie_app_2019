@@ -32,11 +32,25 @@ npm run deploy
 
 
 
-### react router dom
+### Router
+/home에 있으면 Home.js를 가져오고 /about에 있으면 About.js를 가져오도록 하는 것
+[react router dom]
 npm i react-router-dom
 src components 폴더 추가
     routes 폴더 추가
+import { HashRouter, Route } from "react-router-dom";
 
+[App.js]
+function App() {
+  return (
+    <HashRouter>
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" exact={true} component={About} />
+    </HashRouter>
+  );
+}
+import한 HashRouter와 Route를 여기서 씀
+path="/"은 /about path에서 Home과 About의 내용이 합쳐져 나온다. 그래서 exact={true}를 써서 방지한다.
 
 
 
