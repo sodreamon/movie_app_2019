@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movies";
+import "./App.css";
 // import PropTypes from "prop-types";
 // import Potato from "./Potato";
 
@@ -39,10 +40,14 @@ class App extends React.Component {
     const { isLoading, movies } = this.state;
     //[ES6] isLoading이 state에 있는 isLoading이라고 정의     movies는 Movies.Moive component와 무관함
     return (
-      <div>
-        {isLoading
-          ? "Loading"
-          : movies.map(movie => (
+      <section className="container">
+        {isLoading ? (
+          <div className="loader">
+            <span className="loader__text">Loading...</span>
+          </div>
+        ) : (
+          <div className="movies">
+            {movies.map(movie => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -50,10 +55,13 @@ class App extends React.Component {
                 title={movie.title}
                 summary={movie.summary}
                 poster={movie.medium_cover_image}
+                genres={movie.genres}
               />
               //Movies.Movie component를 가져옴 Movie({}) component에 지정한 항목들만 내용물로 사용가능     <Movie 안의 내용들만 Movies.js > Movie component와 관련있음
             ))}
-      </div>
+          </div>
+        )}
+      </section>
     );
   }
 }

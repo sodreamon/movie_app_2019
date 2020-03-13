@@ -57,3 +57,44 @@ axios.get("{json}")
 
 ### async await
 src. App
+
+
+
+
+### JSX html 언어
+class > className
+for > htmlFor ([js] for은 loop임)
+
+
+
+
+
+### Movies.js
+Movie Component Movies.js에서 만들고
+App.js에서 사용
+Movie Component에서 html에 나타낼 내용 모두 입력
+getMovies가 App에 있기 때문에
+Movies. Movie에 사용된 title, year, summary등은 App.js에 import 되고 나서 해당 내용의 경로가 지정됨.
+App. App. render에서 map으로 만들어진 array 들의 정보를 만들고(id는 여기서 생성)
+Movies. Movie에서 html에 보여질 내용 입력
+
+<h3 class="movie__title" style={{backgroundColor: "red"}}>{title}</h3>
+직접 css를 넣을 때
+
+css
+import "./Movie.css"; 
+
+genres
+genres prop는 array이기 때문에 map으로 genre array들을 만들어줌
+결국 ul movie__genres 안에 li genres__genre가 생김
+<ul className="movie__genres">
+          {genres.map((genre, index) => (
+              함수 genre와 index를 생성 index는 id를 위해 숫자를 매김
+
+            <li className="genres__genre" key={index}>
+            index를 숫자로 씀
+            
+              {genre}
+            </li>
+          ))}
+        </ul>
