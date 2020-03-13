@@ -1,4 +1,4 @@
-
+1:34
 
 
 ### react app 만들기
@@ -21,6 +21,21 @@ git push origin master
 
 ### gh pages
 npm i gh-pages
+
+json <script>에 "deploy": "gh-pages " 추가
+                "predeploy": "npm run build"
+json 에 "homepage": "https://sodreamon.github.io/movie_app_2019" 추가
+
+[console] npm run build
+npm run deploy
+
+
+
+
+### react router dom
+npm i react-router-dom
+src components 폴더 추가
+    routes 폴더 추가
 
 
 
