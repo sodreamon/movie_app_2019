@@ -19,6 +19,12 @@ git push origin master
 
 
 
+### gh pages
+npm i gh-pages
+
+
+
+
 ### 새로운 js 생성
 src. Potato
 
@@ -98,3 +104,8 @@ genres prop는 array이기 때문에 map으로 genre array들을 만들어줌
             </li>
           ))}
         </ul>
+
+
+
+
+      
