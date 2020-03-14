@@ -39,6 +39,7 @@ npm i react-router-dom
 src components 폴더 추가
     routes 폴더 추가
 import { HashRouter, Route } from "react-router-dom";
+HashRouter와 BrowserRouter 둘 중 하나 선택해서 사용해도됨
 
 [App.js]
 function App() {
@@ -50,7 +51,32 @@ function App() {
   );
 }
 import한 HashRouter와 Route를 여기서 씀
-path="/"은 /about path에서 Home과 About의 내용이 합쳐져 나온다. 그래서 exact={true}를 써서 방지한다.
+path="/"은 /about path에서 Home과 About의 내용이 합쳐져 나온다. 그래서 exact={true}를 써서 방지한다.1
+
+
+
+
+
+### Link
+src. components. Navigation
+import { Link } from "react-router-dom";
+<a href 대신 <Link to=""> </Link>를 씀. 새로고침 대신 사용된다.
+Link는 Router 안에서만 사용가능 <HashRouter>안에서만 사용가능 [App/js 참조]
+Link를 사용하지 않는다면 굳이 Router 안에 넣을 필요는 없음
+
+Movie.js에서 Link를 사용해 경로를 지정하고 해당경로 props에 넣을 내용(state)를 지정
+
+
+
+
+
+### 
+routes. Detail
+Movies.js Link에서 만들어진 props.location을 가져와 사용 {location}은 props.location과 같음
+{history}는 console에서 props를 보면 페이지 관련 명령어들이 있다.
+App.js 와 Movies.js 에 Detail로 가는 url을 만듬 App.js -> /movie/:id      Movies.js -> `/movie/${id}`
+
+
 
 
 
